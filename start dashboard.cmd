@@ -11,8 +11,9 @@ echo [1/3] Checking/Installing required Python packages (first run may take a mi
 
 echo.
 echo [2/3] Starting Update Helper on http://localhost:8777/ ...
-cd /d "D:\Users\bclark\Tiktok\scripts"
-%PY% "dashboard_update_server.py" "D:\Users\bclark\Tiktok\update_config.json"
+REM Change directory to the Scripts folder relative to the repo root
+cd /d "%~dp0Scripts"
+%PY% "dashboard_update_server.py" "../update_config.json"
 
 echo.
 echo [3/3] Server stopped. You can close this window.

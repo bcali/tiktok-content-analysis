@@ -1,18 +1,22 @@
-python "D:\Users\bclark\tiktok_scoring_v3.py" ^
-  --posts "D:\Users\bclark\Tiktok\dataset_tiktok-scraper_2025-09-09_01-36-18-572.csv" ^
-  --brand_json "D:\Users\bclark\Tiktok\brand.json" ^
-  --out "D:\Users\bclark\Tiktok\out_dense" ^
-  --frames-manifest "D:\Users\bclark\Tiktok\frames_manifest.csv"
+# Scoring command
+python tiktok_scoring_v3.py ^
+  --posts dataset_tiktok-scraper_2025-09-09_01-36-18-572.csv ^
+  --brand_json brand.json ^
+  --out out_dense ^
+  --frames-manifest frames_manifest.csv
 
+# Install dependencies
 pip install pandas python-pptx matplotlib
-python "D:\Users\bclark\build_exec_report.py" ^
-  --scoring "D:\Users\bclark\Tiktok\out_dense\scoring_summary.csv" ^
-  --out "D:\Users\bclark\Tiktok\Exec_Summary.pptx"
 
+# Report generation (basic)
+python build_exec_report.py ^
+  --scoring out_dense/scoring_summary.csv ^
+  --out Exec_Summary.pptx
 
-python "D:\Users\bclark\build_exec_report.py" ^
-  --scoring "D:\Users\bclark\Tiktok\out_dense\scoring_summary.csv" ^
-  --covers  "D:\Users\bclark\Tiktok\assets\covers_manifest.csv" ^
-  --frames_manifest "D:\Users\bclark\Tiktok\frames_manifest.csv" ^
-  --out "D:\Users\bclark\Tiktok\Exec_Summary.pptx" ^
+# Report generation (with covers and frames)
+python build_exec_report.py ^
+  --scoring out_dense/scoring_summary.csv ^
+  --covers  assets/covers_manifest.csv ^
+  --frames_manifest frames_manifest.csv ^
+  --out Exec_Summary.pptx ^
   --topn 5

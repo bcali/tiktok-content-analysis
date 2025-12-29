@@ -1,7 +1,15 @@
-import pandas as pd, numpy as np, re
+import pandas as pd, numpy as np, re, os
+from pathlib import Path
 
-p_in  = r"D:\Users\bclark\Tiktok\out_dense\scoring_summary.csv"
-p_out = r"D:\Users\bclark\Tiktok\out_dense\scoring_summary_with_disclosure.csv"
+# Get the directory of the current script to calculate relative paths
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+p_in  = BASE_DIR / "out_dense" / "scoring_summary.csv"
+p_out = BASE_DIR / "out_dense" / "scoring_summary_with_disclosure.csv"
+
+if not p_in.exists():
+    print(f"Error: Could not find input file {p_in}")
+    exit(1)
 
 df = pd.read_csv(p_in, dtype=str, low_memory=False)
 

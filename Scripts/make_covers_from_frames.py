@@ -1,7 +1,15 @@
 import pandas as pd, os
+from pathlib import Path
 
-FRAMES = r"D:\Users\bclark\Tiktok\frames_manifest.csv"
-OUT    = r"D:\Users\bclark\Tiktok\assets\covers_manifest.csv"
+# Get the directory of the current script to calculate relative paths
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+FRAMES = BASE_DIR / "frames_manifest.csv"
+OUT    = BASE_DIR / "assets" / "covers_manifest.csv"
+
+if not FRAMES.exists():
+    print(f"Error: Could not find frames manifest at {FRAMES}")
+    exit(1)
 
 df = pd.read_csv(FRAMES)
 
@@ -12,7 +20,13 @@ if not {"video_id","frame_file"}.issubset(df.columns):
 def clean(p):
     if pd.isna(p): return None
     s = str(p).strip().strip('"').strip("'")
-    return s.replace("/", "\\")  # normalize slashes for Windows
+    # If the path is absolute and contains bclark, try to make it relative to BASE_DIR
+    if "bclark" in s:
+        # Assuming the path structure is .../frames/... or .../Tiktok/frames/...
+        if "frames" in s:
+            rel_part = s.split("frames")[-1].lstrip("\\").lstrip("/")
+            return str(BASE_DIR / "frames" / rel_part)
+    return s
 
 df["cover_path"] = df["frame_file"].map(clean)
 
