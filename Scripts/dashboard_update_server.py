@@ -75,7 +75,7 @@ def build_cmds():
         cmds.append(("PowerPoint", cmd2))
 
     # 3) HTML dashboard
-    dash_script = os.path.join(sdir, "build_dashboard_html_v5.py")  # or v6+
+    dash_script = os.path.join(sdir, "build_dashboard_html_v6.py")  # Updated to v6
     out_dir = CONFIG["dashboard_dir"]
     os.makedirs(out_dir, exist_ok=True)
     cmd3 = [py_exe(), dash_script,

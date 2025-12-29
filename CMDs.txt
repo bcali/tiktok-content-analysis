@@ -8,15 +8,14 @@ python Scripts/tiktok_scoring_v3.py ^
 # Install dependencies
 pip install -r requirements.txt
 
-# Report generation (basic)
+# Dashboard generation (Modern)
+python Scripts/build_dashboard_html_v6.py ^
+  --scoring out_dense/scoring_summary.csv ^
+  --covers assets/covers_manifest.csv ^
+  --frames_manifest frames_manifest.csv ^
+  --out_dir out_dense/reports/exec_summary/dashboard
+
+# PowerPoint report generation
 python Scripts/build_exec_report_v2.py ^
   --scoring out_dense/scoring_summary.csv ^
   --out Exec_Summary.pptx
-
-# Report generation (with covers and frames)
-python Scripts/build_exec_report_v2.py ^
-  --scoring out_dense/scoring_summary.csv ^
-  --covers  assets/covers_manifest.csv ^
-  --frames_manifest frames_manifest.csv ^
-  --out Exec_Summary.pptx ^
-  --topn 5
