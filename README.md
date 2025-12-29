@@ -11,7 +11,6 @@ This repository contains tools for analyzing TikTok content performance, brand a
    ```
 
 2. **Install dependencies:**
-   It is recommended to use a virtual environment.
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -28,13 +27,13 @@ See `CMDs.txt` for example commands.
 ### Scoring TikTok Videos
 Run the scoring script with your scraper CSV and brand configuration:
 ```bash
-python tiktok_scoring_v3.py --posts your_data.csv --brand_json brand.json --out analysis_out
+python Scripts/tiktok_scoring_v3.py --posts Data/your_data.csv --brand_json brand.json --out out_dense
 ```
 
 ### Generating Executive Reports
 Generate a PowerPoint executive summary:
 ```bash
-python build_exec_report.py --scoring analysis_out/scoring_summary.csv --out Exec_Summary.pptx
+python Scripts/build_exec_report_v2.py --scoring out_dense/scoring_summary.csv --out Exec_Summary.pptx
 ```
 
 ### Dashboard
@@ -42,14 +41,15 @@ To start the update helper for the dashboard:
 ```bash
 start_dashboard.cmd
 ```
-(Or run `python Scripts/dashboard_update_server.py` directly)
 
 ## Project Structure
-- `Scripts/`: Supplementary processing scripts.
-- `assets/`: Icons, fonts, and covers.
+- `Scripts/`: Main analysis and processing scripts.
+- `Data/`: Source datasets and CSVs from scrapers.
+- `Docs/`: Project documentation, PDFs, and report summaries.
+- `assets/`: Icons, fonts, and covers (ignored by Git).
+- `out_dense/`: Output folder for analysis results (ignored by Git).
+- `frames/`: Extracted video frames (ignored by Git).
 - `brand.json`: Brand color and palette configuration.
-- `out_dense/`: Default output folder for analysis results.
-- `frames/`: (Local only) Extracted video frames.
 
 ## Collaboration Workflow
 
@@ -61,9 +61,8 @@ To work together effectively on this project:
     - Create a new branch for significant changes: `git checkout -b feature-name`.
     - `git push` your changes and create a Pull Request on GitHub.
 3.  **Syncing Data (Crucial):**
-    - Since `assets/`, `frames/`, and `out_dense/` are ignored by Git, you must decide how to share these.
-    - **Option A (Fresh Start):** The team member runs `fetch_tiktok_assets.py` to download everything themselves.
-    - **Option B (Shared Drive):** Copy the data folders to a shared drive (OneDrive/Google Drive) so both of you have the same images/videos.
-    - **Note:** If you move the project or receive a folder from someone else, run `python rebuild_manifests.py` to fix any broken file paths in the CSV manifests.
-4.  **Environment:** Always use a virtual environment as described in the Setup section to avoid dependency conflicts.
-
+    - Large binary files (videos, frames) are **NOT** in Git.
+    - **Option A:** The team member runs `Scripts/fetch_tiktok_assets.py` to download everything themselves.
+    - **Option B:** Copy the `assets/`, `frames/`, and `out_dense/` folders via a shared drive.
+    - **Path Fixer:** If you move the project or receive data from someone else, run `python Scripts/rebuild_manifests.py` to fix any broken file paths in the CSV manifests.
+4.  **Organized Paths:** All scripts use relative paths. Avoid using absolute paths when contributing.

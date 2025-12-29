@@ -14,7 +14,7 @@ def make_relative(p, base):
         if f'{os.sep}{folder}{os.sep}' in s:
             return folder + s.split(f'{os.sep}{folder}')[-1]
         if f'/{folder}/' in s:
-            return folder + s.split(f'/{folder}')[-1]
+            return folder + s.split(f'/{folder}/')[-1]
             
     # Fallback: if it's within the base directory, make it relative
     try:
@@ -39,7 +39,8 @@ def rebuild_csv(csv_path, base_dir):
     print(f"Done. Updated {len(path_cols)} columns in {csv_path}")
 
 if __name__ == "__main__":
-    BASE = Path(__file__).resolve().parent
+    # Now in Scripts/ folder, so root is parent
+    ROOT = Path(__file__).resolve().parent.parent
     
     # List of CSVs that likely have absolute paths
     target_csvs = [
@@ -50,5 +51,4 @@ if __name__ == "__main__":
     ]
     
     for csv in target_csvs:
-        rebuild_csv(BASE / csv, BASE)
-
+        rebuild_csv(ROOT / csv, ROOT)

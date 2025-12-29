@@ -1,20 +1,20 @@
 # Scoring command
-python tiktok_scoring_v3.py ^
-  --posts dataset_tiktok-scraper_2025-09-09_01-36-18-572.csv ^
+python Scripts/tiktok_scoring_v3.py ^
+  --posts Data/dataset_tiktok-scraper_2025-09-09_01-36-18-572.csv ^
   --brand_json brand.json ^
   --out out_dense ^
   --frames-manifest frames_manifest.csv
 
 # Install dependencies
-pip install pandas python-pptx matplotlib
+pip install -r requirements.txt
 
 # Report generation (basic)
-python build_exec_report.py ^
+python Scripts/build_exec_report_v2.py ^
   --scoring out_dense/scoring_summary.csv ^
   --out Exec_Summary.pptx
 
 # Report generation (with covers and frames)
-python build_exec_report.py ^
+python Scripts/build_exec_report_v2.py ^
   --scoring out_dense/scoring_summary.csv ^
   --covers  assets/covers_manifest.csv ^
   --frames_manifest frames_manifest.csv ^

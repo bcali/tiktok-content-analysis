@@ -13,7 +13,7 @@ echo.
 echo [2/3] Starting Update Helper on http://localhost:8777/ ...
 REM Change directory to the Scripts folder relative to the repo root
 cd /d "%~dp0Scripts"
-%PY% "dashboard_update_server.py" "../update_config.json"
+%PY% "dashboard_update_server.py" "update_config.json"
 
 echo.
 echo [3/3] Server stopped. You can close this window.
