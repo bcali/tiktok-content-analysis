@@ -51,8 +51,19 @@ start_dashboard.cmd
 - `out_dense/`: Default output folder for analysis results.
 - `frames/`: (Local only) Extracted video frames.
 
-## Collaboration
-- **Paths:** All scripts have been updated to use relative paths. Avoid using absolute paths when contributing.
-- **Data:** Large binary files (videos, frames, assets) are excluded from Git via `.gitignore`. Share these via a separate data sync if necessary.
-- **Manifests:** Files like `frames_manifest.csv` might contain paths that need regeneration if the project folder is moved. Use `rebuild_manifests.py` (if available) or rerun extraction.
+## Collaboration Workflow
+
+To work together effectively on this project:
+
+1.  **GitHub Access:** Ensure your team member is added as a **Collaborator** in the GitHub repository settings.
+2.  **Syncing Code:** 
+    - Always `git pull` before starting work to get the latest scripts.
+    - Create a new branch for significant changes: `git checkout -b feature-name`.
+    - `git push` your changes and create a Pull Request on GitHub.
+3.  **Syncing Data (Crucial):**
+    - Since `assets/`, `frames/`, and `out_dense/` are ignored by Git, you must decide how to share these.
+    - **Option A (Fresh Start):** The team member runs `fetch_tiktok_assets.py` to download everything themselves.
+    - **Option B (Shared Drive):** Copy the data folders to a shared drive (OneDrive/Google Drive) so both of you have the same images/videos.
+    - **Note:** If you move the project or receive a folder from someone else, run `python rebuild_manifests.py` to fix any broken file paths in the CSV manifests.
+4.  **Environment:** Always use a virtual environment as described in the Setup section to avoid dependency conflicts.
 

@@ -6,4 +6,6 @@ pdfminer.six
 flask
 python-pptx
 matplotlib
+requests
+yt-dlp
 
