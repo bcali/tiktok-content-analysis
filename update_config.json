@@ -1,0 +1,17 @@
+{
+  "python": "python",
+  "scripts_dir": "D:\\Users\\bclark\\Tiktok\\scripts",
+  "dataset_csv": "D:\\Users\\bclark\\Tiktok\\dataset_tiktok-scraper_2025-09-09_01-36-18-572.csv",
+  "brand_json": "D:\\Users\\bclark\\Tiktok\\brand.json",
+  "videos_dir": "D:\\Users\\bclark\\Tiktok\\assets\\videos",
+  "covers_manifest": "D:\\Users\\bclark\\Tiktok\\assets\\covers_manifest.csv",
+  "covers_root": "D:\\Users\\bclark\\Tiktok\\assets",
+  "frames_manifest": "D:\\Users\\bclark\\Tiktok\\frames_manifest.csv",
+  "frames_root": "D:\\Users\\bclark\\Tiktok",
+  "out_root": "D:\\Users\\bclark\\Tiktok\\out_dense",
+  "logo": "D:\\Users\\bclark\\Tiktok\\assets\\logo_minor_new.png",
+  "fonts_dir": "D:\\Users\\bclark\\Tiktok\\assets\\fonts",
+  "dashboard_dir": "D:\\Users\\bclark\\Tiktok\\out_dense\\reports\\exec_summary\\dashboard",
+  "run_scoring": true,
+  "run_ppt": true
+}

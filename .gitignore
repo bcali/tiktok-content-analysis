@@ -1,0 +1,36 @@
+# Media and Data
+assets/
+frames/
+out_dense/
+tmp/
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.csv
+*.xlsx
+*.pptx
+*.pdf
+*.docx
+
+# Environment and Config
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.DS_Store
+tiktok_cookies.txt
+
+# Keep configuration files
+!brand.json
+!tiktok_brand_config.json
+!update_config.json
+!covers_manifest.csv
+!frames_manifest.csv
+# Actually, the user might want some CSVs. 
+# But usually large datasets are kept out of git.
+# I'll ignore all CSVs by default and let the user add them if needed.
+
